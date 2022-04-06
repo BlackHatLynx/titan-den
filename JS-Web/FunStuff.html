@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <meta name="viewport" content="width=device-width" initial-scale="1.0" />
+  <br />
+  <p id="demo"></p>
+
+  <button onclick="myFunction()">Give It A Try!</button
+  ><br />
+
+  <h1 id="fog">What's 174 + 709?</h1>
+  <button onclick="document.getElementById('demo1').innerHTML = 174 + 709">
+    Calculate
+  </button>
+  <p id="demo1"></p>
+
+  <h1 id="fog">What's 55 x 411?</h1>
+  <button onclick="document.getElementById('demo2').innerHTML = 55 * 411">
+    Calculate
+  </button>
+  <p id="demo2"></p>
+
+  <h1 id="fog">Your Date?</h1>
+  <p id="demo3"></p>
+
+  <button onclick="getDate()">Reveal</button>
+
+  <h1 id="fog" onclick="this.innerHTML='I was hiding!'">Click this text!</h1>
+
+  <button id="btn">Try</button>
+  <p id="demo4"></p>
+
+  <h1 id="fog">Your Location?</h1>
+  <button onclick="getLocation()">Reveal</button>
+  <p id="demo5"></p>
+
+  <style>
+    body {
+      text-align: center;
+      background-color: black;
+      font-family: Arial;
+      color: white;
+    }
+    button {
+      background-color: green;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 5px;
+      border: none;
+      font-size: 14px;
+      font-family: Segoe UI;
+    }
+    button:hover {
+      background-color: rgb(11, 97, 11);
+      cursor: pointer;
+    }
+    #fog {
+      font-size: 142%;
+    }
+  </style>
+  <br /><br />
+  <script>
+    const z = document.getElementById("btn");
+    function myFunction() {
+      let text;
+      let person = prompt("What's your name?");
+      if (person == null || person == "") {
+        text = "Input wasn't given :(";
+      }
+      let country = prompt("What's your country?");
+      if (country == null || country == "") {
+        text = "Input wasn't given :(";
+      }
+      let hobby = prompt("What's your hobby?");
+      if (hobby == null || hobby == "") {
+        text = "Input wasn't given :(";
+      } else {
+        text =
+          "Hey! " +
+          person +
+          ". So, you're from " +
+          country +
+          "?" +
+          " I see you enjoy " +
+          hobby +
+          ".";
+      }
+      document.getElementById("demo").innerHTML = text;
+    }
+  </script>
+  <script>
+    function getDate() {
+      const d = new Date();
+      document.getElementById("demo3").innerHTML = d.toUTCString();
+    }
+  </script>
+
+  <script>
+    var y = document.getElementById("btn");
+    y.addEventListener("mouseover", firstFunc);
+    y.addEventListener("click", secFunc);
+    y.addEventListener("mouseout", thirdFunc);
+
+    function firstFunc() {
+      document.getElementById("demo4").innerHTML += "Moused Over!<br>";
+    }
+    function secFunc() {
+      document.getElementById("demo4").innerHTML += "Clicked!<br>";
+    }
+    function thirdFunc() {
+      document.getElementById("demo4").innerHTML += "Moused Out!<br>";
+    }
+  </script>
+  <script style="color:green">
+    const x = document.getElementById("demo5");
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
+
+    function showPosition(position) {
+      x.innerHTML =
+        "Latitude: " +
+        position.coords.latitude +
+        "<br>Longitude: " +
+        position.coords.longitude;
+    }
+  </script>
+</html>
